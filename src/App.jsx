@@ -17,9 +17,15 @@ import Signup from './pages/Auth/Signup';
 import Cart from './pages/Cart/Cart';
 
 function App() {
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState('login');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+    setPage('home');
+  };
   
   // Global cart state
   const [cartItems, setCartItems] = useState([
@@ -146,6 +152,13 @@ function App() {
   const handleRemoveItem = (cartId) => {
     setCartItems((prev) => prev.filter((item) => item.id !== cartId));
   };
+
+  if (!isAuthenticated) {
+    if (page === 'signup') {
+      return <Signup onBack={() => setPage('login')} onSwitch={() => setPage('login')} hideBack={true} />;
+    }
+    return <Login onBack={handleLoginSuccess} onSwitch={() => setPage('signup')} hideBack={true} />;
+  }
 
   const isAuthPage = page === 'login' || page === 'signup';
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);

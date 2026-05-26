@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 import { FiMail, FiLock, FiArrowLeft, FiCheck, FiX, FiEye, FiEyeOff } from 'react-icons/fi';
 import { FcGoogle } from 'react-icons/fc';
 
-const Login = ({ onBack, onSwitch }) => {
+const Login = ({ onBack, onSwitch, hideBack = false }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -61,7 +61,7 @@ const Login = ({ onBack, onSwitch }) => {
       {/* ── Left Panel (Desktop Only) ── */}
       <div className={styles.leftPanel}>
         <div className={styles.leftHeader}>
-          <div className={styles.logo} onClick={onBack}>
+          <div className={styles.logo} onClick={hideBack ? null : onBack} style={{ cursor: hideBack ? 'default' : 'pointer' }}>
             SHOP.CO
           </div>
         </div>
@@ -100,10 +100,12 @@ const Login = ({ onBack, onSwitch }) => {
         
         <div className={styles.formBox}>
           {/* Mobile Back Button */}
-          <button className={styles.mobileBackBtn} onClick={onBack}>
-            <FiArrowLeft size={18} style={{ marginRight: '4px' }} />
-            Back to Shop
-          </button>
+          {!hideBack && (
+            <button className={styles.mobileBackBtn} onClick={onBack}>
+              <FiArrowLeft size={18} style={{ marginRight: '4px' }} />
+              Back to Shop
+            </button>
+          )}
 
           <div className={styles.formHeader}>
             <h2>Sign In</h2>
