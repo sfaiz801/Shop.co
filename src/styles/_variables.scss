@@ -1,0 +1,73 @@
+// ===========================
+// SHOP.CO - SCSS Variables
+// ===========================
+
+// Colors
+$black: #000000;
+$white: #ffffff;
+$off-white: #F0F0F0;
+$light-gray: #F2F0F1;
+$medium-gray: #666666;
+$dark-gray: #333333;
+$border-color: rgba(0,0,0,0.1);
+$card-bg: #F0EEED;
+$star-color: #FFC633;
+$discount-badge: #FF3333;
+$discount-text: #FF3333;
+$green-dot: #01AB31;
+
+// Typography
+$font-primary: 'Integral CF', 'Arial Black', sans-serif;
+$font-body: 'Satoshi', 'Helvetica Neue', sans-serif;
+
+// Font sizes
+$fs-xs: 12px;
+$fs-sm: 14px;
+$fs-base: 16px;
+$fs-md: 18px;
+$fs-lg: 20px;
+$fs-xl: 24px;
+$fs-2xl: 32px;
+$fs-3xl: 40px;
+$fs-4xl: 48px;
+$fs-hero: 64px;
+
+// Spacing
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-16: 64px;
+$space-20: 80px;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1280px;
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 20px;
+$radius-full: 62px;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+$shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+
+// Transitions
+$transition: all 0.2s ease;
+$transition-slow: all 0.3s ease;
+
+// Container
+$container-max: 1280px;
+$container-padding: 40px;
+$container-padding-mobile: 16px;
+

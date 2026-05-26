@@ -1,0 +1,117 @@
+@use 'variables' as *;
+
+.section {
+  padding: 0;
+  margin-bottom: -90px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: $tablet) {
+    margin-bottom: -130px;
+  }
+}
+
+.card {
+  background: $black;
+  color: $white;
+  border-radius: $radius-xl;
+  padding: $space-12 $space-16;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-8;
+
+  @media (max-width: $laptop) {
+    flex-direction: column;
+    text-align: center;
+    padding: $space-10 $space-8;
+    gap: $space-6;
+  }
+
+  @media (max-width: $tablet) {
+    padding: $space-8 $space-5;
+    border-radius: $radius-lg;
+  }
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: $fs-3xl;
+  font-weight: 900;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  flex: 0 0 auto;
+  max-width: 480px;
+
+  @media (max-width: $laptop) {
+    font-size: $fs-2xl;
+    max-width: 100%;
+  }
+
+  @media (max-width: $tablet) {
+    font-size: $fs-xl;
+  }
+}
+
+.formWrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  flex: 0 0 auto;
+  width: 360px;
+
+  @media (max-width: $laptop) {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  background: $white;
+  border-radius: $radius-full;
+  padding: 12px 20px;
+
+  svg {
+    color: $medium-gray;
+    flex-shrink: 0;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: $fs-sm;
+    color: $black;
+    width: 100%;
+
+    &::placeholder {
+      color: $medium-gray;
+    }
+  }
+}
+
+.subBtn {
+  background: $white;
+  color: $black;
+  font-size: $fs-sm;
+  font-weight: 600;
+  padding: 14px 20px;
+  border-radius: $radius-full;
+  border: none;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background: $off-white;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+

@@ -1,0 +1,128 @@
+@use 'variables' as *;
+
+.section {
+  padding: $space-20 0;
+  border-top: 1px solid $border-color;
+
+  @media (max-width: $tablet) {
+    padding: $space-12 0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-10;
+
+  @media (max-width: $tablet) {
+    margin-bottom: $space-6;
+  }
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: $fs-3xl;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+
+  @media (max-width: $tablet) {
+    font-size: $fs-xl;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: $space-3;
+}
+
+.arrowBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid $border-color;
+  background: $white;
+  font-size: $fs-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background: $black;
+    color: $white;
+    border-color: $black;
+  }
+}
+
+.cardsWrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-5;
+
+  @media (max-width: $laptop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.card {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: $radius-lg;
+  padding: $space-6;
+  transition: $transition-slow;
+
+  &:hover, &.active {
+    box-shadow: $shadow-md;
+    border-color: rgba(0,0,0,0.15);
+  }
+
+  @media (max-width: $laptop) {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    &:not(.active) {
+      display: none;
+    }
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: $space-3;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-bottom: $space-3;
+  font-size: $fs-base;
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.text {
+  font-size: $fs-base;
+  color: $medium-gray;
+  line-height: 1.65;
+}
+

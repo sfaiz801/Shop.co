@@ -1,0 +1,126 @@
+@use 'variables' as *;
+
+.section {
+  padding: $space-20 0;
+
+  @media (max-width: $tablet) {
+    padding: $space-12 0;
+  }
+}
+
+.wrapper {
+  background: $off-white;
+  border-radius: 40px;
+  padding: $space-12 $space-12;
+
+  @media (max-width: $tablet) {
+    padding: $space-8 $space-5;
+    border-radius: $radius-lg;
+  }
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: $fs-3xl;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-bottom: $space-10;
+
+  @media (max-width: $tablet) {
+    font-size: $fs-2xl;
+    margin-bottom: $space-6;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-5;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    gap: $space-3;
+  }
+}
+
+.card {
+  position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  height: 289px;
+  cursor: pointer;
+
+  @media (max-width: $tablet) {
+    height: 190px;
+  }
+
+  &:nth-child(1) {
+    grid-column: span 1;
+    @media (max-width: $tablet) {
+      grid-column: span 1;
+    }
+  }
+
+  &:nth-child(2) {
+    grid-column: span 2;
+    @media (max-width: $tablet) {
+      grid-column: span 1;
+    }
+  }
+
+  &:nth-child(3) {
+    grid-column: span 2;
+    @media (max-width: $tablet) {
+      grid-column: span 1;
+    }
+  }
+
+  &:nth-child(4) {
+    grid-column: span 1;
+    @media (max-width: $tablet) {
+      grid-column: span 1;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.02) 0%,
+      rgba(0,0,0,0.08) 100%
+    );
+  }
+}
+
+.label {
+  position: absolute;
+  top: 24px;
+  left: 36px;
+  font-family: $font-body;
+  font-size: $fs-2xl;
+  font-weight: 700;
+  color: $black;
+  z-index: 1;
+
+  @media (max-width: $tablet) {
+    font-size: $fs-xl;
+    top: 16px;
+    left: 24px;
+  }
+}
+

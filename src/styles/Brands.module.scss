@@ -1,0 +1,37 @@
+@use 'variables' as *;
+
+.brands {
+  background: $black;
+  padding: 40px 0;
+  overflow: hidden;
+
+  @media (max-width: $tablet) {
+    padding: 30px 0;
+  }
+}
+
+.brandsInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+
+  @media (max-width: $tablet) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 32px;
+  }
+}
+
+.brandLogo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+
+  @media (max-width: $tablet) {
+    height: 22px;
+  }
+}
+
