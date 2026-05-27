@@ -100,54 +100,54 @@ const Signup = ({ onBack, onSwitch, hideBack = false }) => {
   };
 
   return (
-    <div className={styles.container}>
-      {}
+    <div className={`${styles.container} container-fluid p-0`}>
+      {/* Success Toast */}
       <div className={`${styles.toast} ${showToast ? styles.toastShow : ''}`}>
         <FiCheck size={20} />
         <strong>Account created successfully! Redirecting to login...</strong>
       </div>
 
-      {}
-      <div className={styles.leftPanel}>
-        <div className={styles.leftHeader}>
-          <div className={styles.logo} onClick={hideBack ? null : onBack} style={{ cursor: hideBack ? 'default' : 'pointer' }}>
-            SHOP.CO
+      <div className="row g-0 w-100 min-vh-100">
+        {/* Left Panel */}
+        <div className={`${styles.leftPanel} col-lg-6 d-none d-lg-flex`}>
+          <div className={styles.leftHeader}>
+            <div className={styles.logo} onClick={hideBack ? null : onBack} style={{ cursor: hideBack ? 'default' : 'pointer' }}>
+              SHOP.CO
+            </div>
           </div>
-        </div>
 
-        <div className={styles.leftMain}>
-          <h1 className={styles.heading}>
-            Start Your <br />
-            <span className={styles.outlineText}>Journey.</span>
-          </h1>
-          <p className={styles.desc}>
-            Join SHOP.CO today to save your favorites, unlock members-only discounts, and enjoy a faster, fully-tailored shopping checkout!
-          </p>
-        </div>
-
-        {/* Testimonial Card */}
-        <div className={styles.testimonialCard}>
-          <div className={styles.starsRow}>
-            {[1, 2, 3, 4, 5].map((s) => (
-              <FaStar key={s} size={16} color="#FFC633" />
-            ))}
+          <div className={styles.leftMain}>
+            <h1 className={styles.heading}>
+              Start Your <br />
+              <span className={styles.outlineText}>Journey.</span>
+            </h1>
+            <p className={styles.desc}>
+              Join SHOP.CO today to save your favorites, unlock members-only discounts, and enjoy a faster, fully-tailored shopping checkout!
+            </p>
           </div>
-          <p className={styles.quote}>
-            "Creating an account took under a minute. The custom recommendation engine is incredibly accurate and fun to use!"
-          </p>
-          <div className={styles.authorRow}>
-            <div className={styles.authorDetails}>
-              <strong>Sarah M.</strong>
-              <span>Verified Customer</span>
+
+          {/* Testimonial Card */}
+          <div className={styles.testimonialCard}>
+            <div className={styles.starsRow}>
+              {[1, 2, 3, 4, 5].map((s) => (
+                <FaStar key={s} size={16} color="#FFC633" />
+              ))}
+            </div>
+            <p className={styles.quote}>
+              "Creating an account took under a minute. The custom recommendation engine is incredibly accurate and fun to use!"
+            </p>
+            <div className={styles.authorRow}>
+              <div className={styles.authorDetails}>
+                <strong>Sarah M.</strong>
+                <span>Verified Customer</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {}
-      <div className={styles.rightPanel}>
-        
-        <div className={styles.formBox}>
+        {/* Right Panel */}
+        <div className={`${styles.rightPanel} col-12 col-lg-6 d-flex align-items-center justify-content-center`}>
+          <div className={styles.formBox}>
           {/* Mobile Logo Branding */}
           <div className={styles.mobileLogo} onClick={hideBack ? null : onBack}>
             SHOP.CO
@@ -414,9 +414,9 @@ const Signup = ({ onBack, onSwitch, hideBack = false }) => {
             </button>
           </div>
         </div>
-
       </div>
     </div>
+  </div>
   );
 };
 

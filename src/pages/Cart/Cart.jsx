@@ -52,9 +52,9 @@ const Cart = ({ cartItems, onUpdateQty, onRemoveItem, onProductClick, onBackHome
           <button className={styles.shopNowBtn} onClick={onContinueShopping || onBackHome}>Shop Now</button>
         </div>
       ) : (
-        <div className={styles.cartInner}>
+        <div className={`${styles.cartInner} row g-4`}>
           {/* Items List */}
-          <div className={styles.itemsList}>
+          <div className={`${styles.itemsList} col-12 col-lg-7`}>
             {cartItems.map((item) => (
               <div key={item.id} className={styles.itemCard}>
                 <div 
@@ -103,7 +103,7 @@ const Cart = ({ cartItems, onUpdateQty, onRemoveItem, onProductClick, onBackHome
           </div>
 
           {/* Order Summary */}
-          <div className={styles.summaryCard}>
+          <div className={`${styles.summaryCard} col-12 col-lg-5`}>
             <h2 className={styles.summaryTitle}>Order Summary</h2>
 
             <div className={styles.summaryRows}>

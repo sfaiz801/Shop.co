@@ -154,10 +154,10 @@ const ProductDetail = ({ productId, onBack, onBackHome, onAddToCart, onProductCl
       {}
       <section className={styles.productSection}>
         <div className="container">
-          <div className={styles.productGrid}>
+          <div className={`${styles.productGrid} row g-5`}>
 
             {/* Left: Gallery */}
-            <div className={styles.gallery}>
+            <div className={`${styles.gallery} col-12 col-lg-6`}>
               {/* Thumbnails */}
               <div className={styles.thumbs}>
                 {product.images.map((img, i) => (
@@ -182,7 +182,7 @@ const ProductDetail = ({ productId, onBack, onBackHome, onAddToCart, onProductCl
             </div>
 
             {/* Right: Info */}
-            <div className={styles.info}>
+            <div className={`${styles.info} col-12 col-lg-6`}>
               <h1 className={styles.productName}>{product.name.toUpperCase()}</h1>
 
               <StarRating rating={product.rating} />

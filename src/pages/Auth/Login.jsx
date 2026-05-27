@@ -51,54 +51,54 @@ const Login = ({ onBack, onSwitch, hideBack = false }) => {
   };
 
   return (
-    <div className={styles.container}>
-      {}
+    <div className={`${styles.container} container-fluid p-0`}>
+      {/* Success Toast */}
       <div className={`${styles.toast} ${showToast ? styles.toastShow : ''}`}>
         <FiCheck size={20} />
         <strong>Success! Welcome back to SHOP.CO.</strong>
       </div>
 
-      {}
-      <div className={styles.leftPanel}>
-        <div className={styles.leftHeader}>
-          <div className={styles.logo} onClick={hideBack ? null : onBack} style={{ cursor: hideBack ? 'default' : 'pointer' }}>
-            SHOP.CO
+      <div className="row g-0 w-100 min-vh-100">
+        {/* Left Panel */}
+        <div className={`${styles.leftPanel} col-lg-6 d-none d-lg-flex`}>
+          <div className={styles.leftHeader}>
+            <div className={styles.logo} onClick={hideBack ? null : onBack} style={{ cursor: hideBack ? 'default' : 'pointer' }}>
+              SHOP.CO
+            </div>
           </div>
-        </div>
 
-        <div className={styles.leftMain}>
-          <h1 className={styles.heading}>
-            Welcome Back to <br />
-            <span className={styles.outlineText}>Fashion.</span>
-          </h1>
-          <p className={styles.desc}>
-            Sign in to unlock your personalized feed, track orders, and discover tailored recommendations built specifically for your style.
-          </p>
-        </div>
-
-        {/* Testimonial Card */}
-        <div className={styles.testimonialCard}>
-          <div className={styles.starsRow}>
-            {[1, 2, 3, 4, 5].map((s) => (
-              <FaStar key={s} size={16} color="#FFC633" />
-            ))}
+          <div className={styles.leftMain}>
+            <h1 className={styles.heading}>
+              Welcome Back to <br />
+              <span className={styles.outlineText}>Fashion.</span>
+            </h1>
+            <p className={styles.desc}>
+              Sign in to unlock your personalized feed, track orders, and discover tailored recommendations built specifically for your style.
+            </p>
           </div>
-          <p className={styles.quote}>
-            "SHOP.CO completely transformed my shopping experience. The style recommendations are spot-on, and the quality is absolutely unmatched!"
-          </p>
-          <div className={styles.authorRow}>
-            <div className={styles.authorDetails}>
-              <strong>Sarah M.</strong>
-              <span>Verified Customer</span>
+
+          {/* Testimonial Card */}
+          <div className={styles.testimonialCard}>
+            <div className={styles.starsRow}>
+              {[1, 2, 3, 4, 5].map((s) => (
+                <FaStar key={s} size={16} color="#FFC633" />
+              ))}
+            </div>
+            <p className={styles.quote}>
+              "SHOP.CO completely transformed my shopping experience. The style recommendations are spot-on, and the quality is absolutely unmatched!"
+            </p>
+            <div className={styles.authorRow}>
+              <div className={styles.authorDetails}>
+                <strong>Sarah M.</strong>
+                <span>Verified Customer</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {}
-      <div className={styles.rightPanel}>
-        
-        <div className={styles.formBox}>
+        {/* Right Panel */}
+        <div className={`${styles.rightPanel} col-12 col-lg-6 d-flex align-items-center justify-content-center`}>
+          <div className={styles.formBox}>
           {/* Mobile Logo Branding */}
           <div className={styles.mobileLogo} onClick={hideBack ? null : onBack}>
             SHOP.CO
@@ -249,9 +249,9 @@ const Login = ({ onBack, onSwitch, hideBack = false }) => {
             </button>
           </div>
         </div>
-
       </div>
     </div>
+  </div>
   );
 };
 

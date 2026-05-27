@@ -308,10 +308,10 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch, init
       {}
       <section className={styles.mainSection}>
         <div className="container">
-          <div className={styles.layoutGrid}>
+          <div className={`${styles.layoutGrid} row g-4`}>
             
             {/* Desktop Left Sidebar */}
-            <aside className={styles.sidebar}>
+            <aside className={`${styles.sidebar} col-12 col-lg-3 d-none d-lg-block`}>
               {renderFilters()}
             </aside>
 
@@ -332,7 +332,7 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch, init
             </div>
 
             {/* Right Products Area */}
-            <div className={styles.productsArea}>
+            <div className={`${styles.productsArea} col-12 col-lg-9`}>
               
               {/* Search Query Chip Indicator */}
               {searchQuery && (
@@ -383,13 +383,14 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch, init
 
               {/* Products Grid */}
               {displayedProducts.length > 0 ? (
-                <div className={styles.productsGrid}>
+                <div className={`${styles.productsGrid} row g-4`}>
                   {displayedProducts.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      onClick={onProductClick}
-                    />
+                    <div key={product.id} className="col-6 col-md-4">
+                      <ProductCard
+                        product={product}
+                        onClick={onProductClick}
+                      />
+                    </div>
                   ))}
                 </div>
               ) : (
