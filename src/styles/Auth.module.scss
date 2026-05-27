@@ -154,8 +154,10 @@
   justify-content: center;
   padding: $space-16 $space-8;
   position: relative;
+  background: $white;
 
-  @media (max-width: $mobile) {
+  @media (max-width: $tablet) {
+    background: $off-white;
     padding: $space-10 $space-4;
   }
 }
@@ -166,6 +168,31 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+
+  @media (max-width: $tablet) {
+    background: $white;
+    padding: $space-8 $space-6;
+    border-radius: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.mobileLogo {
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: block;
+    font-family: $font-primary;
+    font-size: 32px;
+    font-weight: 700;
+    color: $black;
+    text-align: center;
+    letter-spacing: -0.5px;
+    margin-bottom: -8px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
 }
 
 .formHeader {

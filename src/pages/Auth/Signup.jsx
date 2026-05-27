@@ -148,6 +148,11 @@ const Signup = ({ onBack, onSwitch, hideBack = false }) => {
       <div className={styles.rightPanel}>
         
         <div className={styles.formBox}>
+          {/* Mobile Logo Branding */}
+          <div className={styles.mobileLogo} onClick={hideBack ? null : onBack}>
+            SHOP.CO
+          </div>
+
           {/* Mobile Back Button */}
           {!hideBack && (
             <button className={styles.mobileBackBtn} onClick={onBack}>
