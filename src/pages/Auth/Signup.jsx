@@ -109,7 +109,7 @@ const Signup = ({ onBack, onSwitch, hideBack = false }) => {
 
       <div className="row g-0 w-100 min-vh-100">
         {/* Left Panel */}
-        <div className={`${styles.leftPanel} col-lg-6 d-none d-lg-flex`}>
+        <div className={`${styles.leftPanel} col-md-6 d-none d-md-flex`}>
           <div className={styles.leftHeader}>
             <div className={styles.logo} onClick={hideBack ? null : onBack} style={{ cursor: hideBack ? 'default' : 'pointer' }}>
               SHOP.CO
@@ -146,7 +146,7 @@ const Signup = ({ onBack, onSwitch, hideBack = false }) => {
         </div>
 
         {/* Right Panel */}
-        <div className={`${styles.rightPanel} col-12 col-lg-6 d-flex align-items-center justify-content-center`}>
+        <div className={`${styles.rightPanel} col-12 col-md-6 d-flex align-items-center justify-content-center`}>
           <div className={styles.formBox}>
           {/* Mobile Logo Branding */}
           <div className={styles.mobileLogo} onClick={hideBack ? null : onBack}>

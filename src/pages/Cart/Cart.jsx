@@ -54,7 +54,7 @@ const Cart = ({ cartItems, onUpdateQty, onRemoveItem, onProductClick, onBackHome
       ) : (
         <div className={`${styles.cartInner} row g-4`}>
           {/* Items List */}
-          <div className={`${styles.itemsList} col-12 col-lg-7`}>
+          <div className={`${styles.itemsList} col-12 col-md-7`}>
             {cartItems.map((item) => (
               <div key={item.id} className={styles.itemCard}>
                 <div 
@@ -103,7 +103,7 @@ const Cart = ({ cartItems, onUpdateQty, onRemoveItem, onProductClick, onBackHome
           </div>
 
           {/* Order Summary */}
-          <div className={`${styles.summaryCard} col-12 col-lg-5`}>
+          <div className={`${styles.summaryCard} col-12 col-md-5`}>
             <h2 className={styles.summaryTitle}>Order Summary</h2>
 
             <div className={styles.summaryRows}>

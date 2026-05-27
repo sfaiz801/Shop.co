@@ -48,19 +48,7 @@
 }
 
 .productGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: $space-10;
-  align-items: flex-start;
-
-  @media (max-width: $laptop) {
-    gap: $space-8;
-  }
-
-  @media (max-width: $tablet) {
-    grid-template-columns: 1fr;
-    gap: $space-6;
-  }
+  margin-bottom: $space-10;
 }
 
 .gallery {

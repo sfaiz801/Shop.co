@@ -89,21 +89,15 @@
 
 /* Cart Grid Layout */
 .cartInner {
-  display: flex;
-  align-items: flex-start;
-  gap: $space-5;
   margin-bottom: $space-20;
 
   @media (max-width: $laptop) {
-    flex-direction: column;
-    gap: $space-6;
     margin-bottom: $space-12;
   }
 }
 
 /* Items List Card Container */
 .itemsList {
-  flex: 1;
   border: 1px solid $border-color;
   border-radius: $radius-xl;
   padding: $space-6;
@@ -285,7 +279,8 @@
 
 /* Order Summary Box */
 .summaryCard {
-  width: 505px;
+  width: 100%;
+  max-width: 505px;
   border: 1px solid $border-color;
   border-radius: $radius-xl;
   padding: $space-6;
@@ -293,10 +288,6 @@
   flex-direction: column;
   gap: $space-6;
   background: $white;
-
-  @media (max-width: $laptop) {
-    width: 100%;
-  }
 
   @media (max-width: $tablet) {
     padding: $space-5;

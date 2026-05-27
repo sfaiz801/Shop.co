@@ -311,7 +311,7 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch, init
           <div className={`${styles.layoutGrid} row g-4`}>
             
             {/* Desktop Left Sidebar */}
-            <aside className={`${styles.sidebar} col-12 col-lg-3 d-none d-lg-block`}>
+            <aside className={`${styles.sidebar} col-12 col-md-3 d-none d-md-block`}>
               {renderFilters()}
             </aside>
 
@@ -332,7 +332,7 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch, init
             </div>
 
             {/* Right Products Area */}
-            <div className={`${styles.productsArea} col-12 col-lg-9`}>
+            <div className={`${styles.productsArea} col-12 col-md-9`}>
               
               {/* Search Query Chip Indicator */}
               {searchQuery && (

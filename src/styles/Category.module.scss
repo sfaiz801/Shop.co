@@ -48,19 +48,7 @@
 }
 
 .layoutGrid {
-  display: grid;
-  grid-template-columns: 295px 1fr;
-  gap: $space-6;
   align-items: flex-start;
-
-  @media (max-width: $laptop) {
-    grid-template-columns: 240px 1fr;
-    gap: $space-4;
-  }
-
-  @media (max-width: $tablet) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .sidebar {
@@ -479,23 +467,6 @@
 }
 
 .productsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-5;
-
-  @media (max-width: $laptop) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: $tablet) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: $space-4;
-  }
-
-  @media (max-width: $mobile) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
-  }
 }
 
 .noProducts {

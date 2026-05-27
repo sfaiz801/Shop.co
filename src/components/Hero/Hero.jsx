@@ -3,10 +3,10 @@ import styles from '../../styles/Hero.module.scss';
 const Hero = ({ onShopNowClick }) => {
   return (
     <section className={styles.hero}>
-      <div className={`container ${styles.heroInner}`}>
-        <div className="row align-items-center w-100 g-4">
+      <div className="container">
+        <div className={`${styles.heroInner} row align-items-end g-0 w-100`}>
           {/* Left Content */}
-          <div className={`${styles.heroContent} col-12 col-lg-6`}>
+          <div className={`${styles.heroContent} col-12 col-md-6`}>
             <h1 className={styles.heroTitle}>
               FIND CLOTHES<br />
               THAT MATCHES<br />
@@ -40,7 +40,7 @@ const Hero = ({ onShopNowClick }) => {
           </div>
 
           {/* Right Image */}
-          <div className={`${styles.heroImageWrap} col-12 col-lg-6`}>
+          <div className={`${styles.heroImageWrap} col-12 col-md-6`}>
             <img
               src="/assets/hero_model.png"
               alt="Fashion models"
