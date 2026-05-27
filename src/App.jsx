@@ -37,7 +37,7 @@ function App() {
       color: 'White',
       price: 145,
       quantity: 1,
-      image: '/assets/product_checkered_shirt.png'
+      image: '/assets/product_gradient_tshirt.png'
     },
     {
       id: 'cart-2',

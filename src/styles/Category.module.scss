@@ -4,7 +4,6 @@
   background: $white;
 }
 
-/* ── Breadcrumbs ── */
 .breadcrumbWrap {
   padding: 24px 0 0;
 }
@@ -40,7 +39,6 @@
   font-weight: 500;
 }
 
-/* ── Main Layout ── */
 .mainSection {
   padding: $space-6 0 $space-16;
 
@@ -65,14 +63,12 @@
   }
 }
 
-/* ── Left Sidebar (Desktop) ── */
 .sidebar {
   @media (max-width: $tablet) {
     display: none;
   }
 }
 
-/* ── Filters Sidebar Container ── */
 .filterBox {
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 20px;
@@ -326,7 +322,6 @@
   }
 }
 
-/* ── Mobile Filters Drawer Panel ── */
 .mobileDrawer {
   display: none;
 
@@ -389,7 +384,6 @@
   backdrop-filter: blur(2px);
 }
 
-/* ── Products List Panel ── */
 .productsArea {
   display: flex;
   flex-direction: column;
@@ -484,7 +478,6 @@
   }
 }
 
-/* ── 3x3 Products Grid ── */
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -537,7 +530,6 @@
   }
 }
 
-/* ── Premium Pagination ── */
 .paginationRow {
   display: flex;
   align-items: center;

@@ -4,7 +4,6 @@
   background: $white;
 }
 
-/* ── Breadcrumb ── */
 .breadcrumbWrap {
   padding: 20px 0 0;
 }
@@ -40,7 +39,6 @@
   font-weight: 500;
 }
 
-/* ── Product Section ── */
 .productSection {
   padding: $space-8 0 $space-12;
 
@@ -65,7 +63,6 @@
   }
 }
 
-/* ── Gallery ── */
 .gallery {
   display: flex;
   gap: $space-4;
@@ -139,7 +136,6 @@
   display: block;
 }
 
-/* ── Product Info ── */
 .info {
   display: flex;
   flex-direction: column;
@@ -229,7 +225,6 @@
   background: rgba(0,0,0,0.1);
 }
 
-/* ── Option Groups ── */
 .optionGroup {
   display: flex;
   flex-direction: column;
@@ -377,7 +372,6 @@
   }
 }
 
-/* ── Tabs ── */
 .tabsSection {
   border-top: 1px solid rgba(0,0,0,0.1);
 }
@@ -431,7 +425,6 @@
   line-height: 1.7;
 }
 
-/* ── Reviews ── */
 .reviewsSection {
   padding: $space-8 0 $space-12;
 }
@@ -636,7 +629,6 @@
   }
 }
 
-/* ── Related Products ── */
 .relatedSection {
   padding: $space-12 0 $space-20;
   border-top: 1px solid rgba(0,0,0,0.1);

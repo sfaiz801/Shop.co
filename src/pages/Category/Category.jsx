@@ -278,7 +278,7 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) =>
 
   return (
     <div className={styles.page}>
-      {/* ── Breadcrumb ── */}
+      {}
       <div className={styles.breadcrumbWrap}>
         <div className="container">
           <nav className={styles.breadcrumb}>
@@ -291,7 +291,7 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) =>
         </div>
       </div>
 
-      {/* ── Main Category Content ── */}
+      {}
       <section className={styles.mainSection}>
         <div className="container">
           <div className={styles.layoutGrid}>

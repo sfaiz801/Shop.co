@@ -7,7 +7,7 @@ export const relatedProducts = [
     "discount": 20,
     "rating": 4.0,
     "reviews": 93,
-    "image": "/assets/product_tshirt_tape.png"
+    "image": "/assets/product_polo_contrast.png"
   },
   {
     "id": 10,
@@ -16,7 +16,7 @@ export const relatedProducts = [
     "originalPrice": null,
     "rating": 3.5,
     "reviews": 65,
-    "image": "/assets/product_checkered_shirt.png"
+    "image": "/assets/product_gradient_tshirt.png"
   },
   {
     "id": 11,
@@ -25,7 +25,7 @@ export const relatedProducts = [
     "originalPrice": null,
     "rating": 4.5,
     "reviews": 79,
-    "image": "/assets/product_sleeve_striped.png"
+    "image": "/assets/product_polo_tipping.png"
   },
   {
     "id": 12,
@@ -35,6 +35,6 @@ export const relatedProducts = [
     "discount": 30,
     "rating": 5.0,
     "reviews": 52,
-    "image": "/assets/product_vertical_striped.png"
+    "image": "/assets/product_black_striped.png"
   }
 ];

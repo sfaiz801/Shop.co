@@ -47,7 +47,6 @@ const Hero = ({ onShopNowClick }) => {
             className={styles.heroImage}
           />
 
-          {/* Decorative stars */}
           <svg 
             className={`${styles.star} ${styles.starTop}`} 
             viewBox="0 0 104 104" 

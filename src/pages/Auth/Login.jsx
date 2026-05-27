@@ -52,13 +52,13 @@ const Login = ({ onBack, onSwitch, hideBack = false }) => {
 
   return (
     <div className={styles.container}>
-      {/* ── Success Toast ── */}
+      {}
       <div className={`${styles.toast} ${showToast ? styles.toastShow : ''}`}>
         <FiCheck size={20} />
         <strong>Success! Welcome back to SHOP.CO.</strong>
       </div>
 
-      {/* ── Left Panel (Desktop Only) ── */}
+      {}
       <div className={styles.leftPanel}>
         <div className={styles.leftHeader}>
           <div className={styles.logo} onClick={hideBack ? null : onBack} style={{ cursor: hideBack ? 'default' : 'pointer' }}>
@@ -95,7 +95,7 @@ const Login = ({ onBack, onSwitch, hideBack = false }) => {
         </div>
       </div>
 
-      {/* ── Right Panel (Form) ── */}
+      {}
       <div className={styles.rightPanel}>
         
         <div className={styles.formBox}>

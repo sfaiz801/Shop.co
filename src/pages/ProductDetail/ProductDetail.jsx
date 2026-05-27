@@ -5,7 +5,6 @@ import ProductCard from '../../components/ProductSection/ProductCard';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import { FiMinus, FiPlus, FiMoreHorizontal, FiFilter, FiChevronDown } from 'react-icons/fi';
 
-/* ── Star Rating ── */
 const StarRating = ({ rating, size = 18 }) => (
   <div className={styles.stars}>
     {[1, 2, 3, 4, 5].map((s) => {
@@ -20,7 +19,6 @@ const StarRating = ({ rating, size = 18 }) => (
   </div>
 );
 
-/* ── Review Card ── */
 const ReviewCard = ({ review }) => (
   <div className={styles.reviewCard}>
     <div className={styles.reviewTop}>
@@ -36,7 +34,6 @@ const ReviewCard = ({ review }) => (
   </div>
 );
 
-/* ── Build product catalog ── */
 const buildCatalog = () => {
   const items = [...data.newArrivals, ...data.topSelling, ...data.relatedProducts];
   const map = new Map();
@@ -67,7 +64,6 @@ const colorNames = {
   '#000000': 'Black',
 };
 
-/* ── Main Component ── */
 const ProductDetail = ({ productId, onBack, onBackHome, onAddToCart, onProductClick }) => {
   // Resolve product — use static detail data or synthesize from catalog
   const product = useMemo(() => {
@@ -142,7 +138,7 @@ const ProductDetail = ({ productId, onBack, onBackHome, onAddToCart, onProductCl
   return (
     <div className={styles.page}>
 
-      {/* ── Breadcrumb ── */}
+      {}
       <div className={styles.breadcrumbWrap}>
         <div className="container">
           <nav className={styles.breadcrumb}>
@@ -155,7 +151,7 @@ const ProductDetail = ({ productId, onBack, onBackHome, onAddToCart, onProductCl
         </div>
       </div>
 
-      {/* ── Product Main ── */}
+      {}
       <section className={styles.productSection}>
         <div className="container">
           <div className={styles.productGrid}>
@@ -277,7 +273,7 @@ const ProductDetail = ({ productId, onBack, onBackHome, onAddToCart, onProductCl
         </div>
       </section>
 
-      {/* ── Tabs ── */}
+      {}
       <section className={styles.tabsSection}>
         <div className="container">
           <div className={styles.tabs}>
@@ -339,7 +335,7 @@ const ProductDetail = ({ productId, onBack, onBackHome, onAddToCart, onProductCl
         </div>
       </section>
 
-      {/* ── You Might Also Like ── */}
+      {}
       <section className={styles.relatedSection}>
         <div className="container">
           <h2 className={styles.relatedTitle}>YOU MIGHT ALSO LIKE</h2>

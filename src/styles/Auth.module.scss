@@ -6,7 +6,6 @@
   background: $white;
 }
 
-/* ── Left Sidebar Panel (Desktop Only) ── */
 .leftPanel {
   flex: 1;
   background: $black;
@@ -148,7 +147,6 @@
   }
 }
 
-/* ── Right Panel Form ── */
 .rightPanel {
   flex: 1;
   display: flex;
@@ -529,7 +527,6 @@
   }
 }
 
-/* ── Success Toast Slide-Down ── */
 .toast {
   position: fixed;
   top: 24px;
