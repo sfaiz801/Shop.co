@@ -45,8 +45,8 @@
   font-family: $font-primary;
   font-size: $fs-hero;
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -1px;
+  line-height: 1.15;
+  letter-spacing: normal;
   color: $black;
   text-transform: uppercase;
   margin-bottom: $space-5;
@@ -57,7 +57,7 @@
 
   @media (max-width: $tablet) {
     font-size: $fs-3xl;
-    letter-spacing: -1px;
+    letter-spacing: normal;
   }
 
   @media (max-width: $mobile) {
@@ -206,17 +206,24 @@
 }
 
 .heroImage {
-  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   height: 100%;
+  width: auto;
+  max-width: none;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: right bottom;
 
   @media (max-width: $tablet) {
-    object-fit: cover;
-    object-position: right bottom;
+    position: relative;
+    bottom: auto;
+    right: auto;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
   }
 }
 
