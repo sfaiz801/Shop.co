@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.scss';
 import data from './data/data';
 
@@ -16,16 +19,52 @@ import Login from './pages/Auth/Login';
 import Signup from './pages/Auth/Signup';
 import Cart from './pages/Cart/Cart';
 
+// Wrapper component to bridge dynamic React Router parameters to the original ProductDetail component
+function ProductDetailWrapper({ onAddToCart, onBackHome }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  
+  const goToDetail = (productId) => {
+    navigate(`/product/${productId}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToCategory = () => {
+    navigate('/category');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <ProductDetail 
+      productId={Number(id)} 
+      onBack={goToCategory}
+      onBackHome={onBackHome}
+      onAddToCart={onAddToCart}
+      onProductClick={goToDetail}
+    />
+  );
+}
+
 function App() {
-  const [page, setPage] = useState('login');
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProductId, setSelectedProductId] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  // Persistent Auth State
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('shop_co_auth') === 'true';
+  });
+  
   const [shopFilter, setShopFilter] = useState(null);
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
-    setPage('home');
+    localStorage.setItem('shop_co_auth', 'true');
+    toast.success("Welcome to SHOP.CO! Logged in successfully. 🎉", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+    navigate('/');
   };
   
   // Global cart state
@@ -64,41 +103,41 @@ function App() {
 
   const goToDetail = (productId) => {
     setSelectedProductId(productId || null);
-    setPage('detail');
+    navigate(`/product/${productId}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goHome = () => {
     setSearchQuery('');
     setShopFilter(null);
-    setPage('home');
+    navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goToCategory = () => {
     setSearchQuery('');
     setShopFilter(null);
-    setPage('category');
+    navigate('/category');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goToSale = () => {
     setSearchQuery('');
     setShopFilter('sale');
-    setPage('category');
+    navigate('/category');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goToNewArrivals = () => {
     setSearchQuery('');
     setShopFilter('new');
-    setPage('category');
+    navigate('/category');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goToBrands = () => {
-    if (page !== 'home') {
-      setPage('home');
+    if (window.location.pathname !== '/') {
+      navigate('/');
       setTimeout(() => {
         const el = document.getElementById('brands-section');
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -110,23 +149,29 @@ function App() {
   };
 
   const goToLogin = () => {
-    setPage('login');
+    setIsAuthenticated(false);
+    localStorage.removeItem('shop_co_auth');
+    toast.info("Logged out successfully. See you soon! 👋", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+    navigate('/login');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goToSignup = () => {
-    setPage('signup');
+    navigate('/signup');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goToCart = () => {
-    setPage('cart');
+    navigate('/cart');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setPage('category');
+    navigate('/category');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -161,6 +206,12 @@ function App() {
       setCartItems((prev) => [...prev, newItem]);
     }
 
+    // Add Toast Notification
+    toast.success(`${product.name} (${size}, ${color}) x ${quantity} added to Cart! 🛒`, {
+      position: "top-right",
+      autoClose: 3000,
+    });
+
     // Navigate to cart
     goToCart();
   };
@@ -183,19 +234,12 @@ function App() {
     setCartItems((prev) => prev.filter((item) => item.id !== cartId));
   };
 
-  if (!isAuthenticated) {
-    if (page === 'signup') {
-      return <Signup onBack={() => setPage('login')} onSwitch={() => setPage('login')} hideBack={true} />;
-    }
-    return <Login onBack={handleLoginSuccess} onSwitch={() => setPage('signup')} hideBack={true} />;
-  }
-
-  const isAuthPage = page === 'login' || page === 'signup';
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <>
-      {!isAuthPage && (
+      <ToastContainer />
+      {isAuthenticated && (
         <Navbar 
           onLogoClick={goHome} 
           onShopClick={goToCategory} 
@@ -211,68 +255,70 @@ function App() {
         />
       )}
 
-      {page === 'home' && (
-        <main>
-          <Hero onShopNowClick={goToCategory} />
-          <div id="brands-section"><Brands /></div>
-          <ProductSection title="New Arrivals" products={data.newArrivals} onCardClick={goToDetail} onViewAllClick={goToCategory} />
-          <ProductSection title="Top Selling" products={data.topSelling} onCardClick={goToDetail} onViewAllClick={goToCategory} />
-          <DressStyle onCategoryClick={goToCategory} />
-          <Testimonials />
-          <Newsletter />
-        </main>
-      )}
+      <Routes>
+        {!isAuthenticated ? (
+          <>
+            <Route path="/signup" element={<Signup onBack={() => navigate('/login')} onSwitch={() => navigate('/login')} hideBack={true} />} />
+            <Route path="*" element={<Login onBack={handleLoginSuccess} onSwitch={goToSignup} hideBack={true} />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={
+              <main>
+                <Hero onShopNowClick={goToCategory} />
+                <div id="brands-section"><Brands /></div>
+                <ProductSection title="New Arrivals" products={data.newArrivals} onCardClick={goToDetail} onViewAllClick={goToCategory} />
+                <ProductSection title="Top Selling" products={data.topSelling} onCardClick={goToDetail} onViewAllClick={goToCategory} />
+                <DressStyle onCategoryClick={goToCategory} />
+                <Testimonials />
+                <Newsletter />
+              </main>
+            } />
 
-      {page === 'category' && (
-        <main>
-          <Category 
-            onProductClick={goToDetail} 
-            onBackHome={goHome} 
-            searchQuery={searchQuery}
-            onClearSearch={() => setSearchQuery('')}
-            initialFilter={shopFilter}
-            onClearInitialFilter={() => setShopFilter(null)}
-          />
-          <Newsletter />
-        </main>
-      )}
+            <Route path="/category" element={
+              <main>
+                <Category 
+                  onProductClick={goToDetail} 
+                  onBackHome={goHome} 
+                  searchQuery={searchQuery}
+                  onClearSearch={() => setSearchQuery('')}
+                  initialFilter={shopFilter}
+                  onClearInitialFilter={() => setShopFilter(null)}
+                />
+                <Newsletter />
+              </main>
+            } />
 
-      {page === 'detail' && (
-        <main>
-          <ProductDetail 
-            productId={selectedProductId} 
-            onBack={goToCategory}
-            onBackHome={goHome}
-            onAddToCart={handleAddToCart}
-            onProductClick={goToDetail}
-          />
-          <Newsletter />
-        </main>
-      )}
+            <Route path="/product/:id" element={
+              <main>
+                <ProductDetailWrapper 
+                  onAddToCart={handleAddToCart}
+                  onBackHome={goHome}
+                />
+                <Newsletter />
+              </main>
+            } />
 
-      {page === 'cart' && (
-        <main>
-          <Cart 
-            cartItems={cartItems}
-            onUpdateQty={handleUpdateQty}
-            onRemoveItem={handleRemoveItem}
-            onProductClick={goToDetail} 
-            onBackHome={goHome}
-            onContinueShopping={goToCategory}
-          />
-          <Newsletter />
-        </main>
-      )}
+            <Route path="/cart" element={
+              <main>
+                <Cart 
+                  cartItems={cartItems}
+                  onUpdateQty={handleUpdateQty}
+                  onRemoveItem={handleRemoveItem}
+                  onProductClick={goToDetail} 
+                  onBackHome={goHome}
+                  onContinueShopping={goToCategory}
+                />
+                <Newsletter />
+              </main>
+            } />
 
-      {page === 'login' && (
-        <Login onBack={goHome} onSwitch={goToSignup} />
-      )}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </>
+        )}
+      </Routes>
 
-      {page === 'signup' && (
-        <Signup onBack={goHome} onSwitch={goToLogin} />
-      )}
-
-      {!isAuthPage && <Footer onLogoClick={goHome} />}
+      {isAuthenticated && <Footer onLogoClick={goHome} />}
     </>
   );
 }
