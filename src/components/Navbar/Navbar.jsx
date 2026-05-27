@@ -10,7 +10,7 @@ import {
   FiArrowLeft
 } from 'react-icons/fi';
 
-const Navbar = ({ onLogoClick, onShopClick, onAccountClick, onCartClick, onSearch, searchQuery, onSuggestionClick }) => {
+const Navbar = ({ onLogoClick, onShopClick, onAccountClick, onCartClick, onSearch, searchQuery, onSuggestionClick, cartCount, onOnSaleClick, onNewArrivalsClick, onBrandsClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [announcementVisible, setAnnouncementVisible] = useState(true);
   const [localSearch, setLocalSearch] = useState(searchQuery || '');
@@ -185,13 +185,25 @@ const Navbar = ({ onLogoClick, onShopClick, onAccountClick, onCartClick, onSearc
               <FiX size={20} />
             </button>
             <li>
-              <a href="#" onClick={handleShopLink}>
+              <a href="#" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onShopClick && onShopClick(); }}>
                 Shop <FiChevronDown size={12} className={styles.arrow} />
               </a>
             </li>
-            <li><a href="#" onClick={handleShopLink}>On Sale</a></li>
-            <li><a href="#" onClick={handleShopLink}>New Arrivals</a></li>
-            <li><a href="#" onClick={handleShopLink}>Brands</a></li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onOnSaleClick ? onOnSaleClick() : (onShopClick && onShopClick()); }}>
+                On Sale
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNewArrivalsClick ? onNewArrivalsClick() : (onShopClick && onShopClick()); }}>
+                New Arrivals
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onBrandsClick ? onBrandsClick() : (onShopClick && onShopClick()); }}>
+                Brands
+              </a>
+            </li>
           </ul>
 
           {/* Search + Icons */}

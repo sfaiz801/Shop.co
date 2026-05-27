@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import data from '../../data/data';
 import styles from '../../styles/Category.module.scss';
 import ProductCard from '../../components/ProductSection/ProductCard';
@@ -10,7 +10,7 @@ import {
   FiSliders 
 } from 'react-icons/fi';
 
-const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) => {
+const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch, initialFilter, onClearInitialFilter }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeSize, setActiveSize] = useState('Large');
@@ -18,6 +18,11 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) =>
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeDressStyle, setActiveDressStyle] = useState(null);
   const [priceMax, setPriceMax] = useState(200);
+  const [currentFilter, setCurrentFilter] = useState(initialFilter || null);
+
+  useEffect(() => {
+    setCurrentFilter(initialFilter);
+  }, [initialFilter]);
 
   // Compile all 12 products and deterministically assign tags
   const allProducts = useMemo(() => {
@@ -71,6 +76,13 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) =>
           return false;
         }
       }
+      if (currentFilter === 'sale' && !product.originalPrice) {
+        return false;
+      }
+      if (currentFilter === 'new') {
+        const isNew = data.newArrivals.some(item => item.id === product.id);
+        if (!isNew) return false;
+      }
       if (activeCategory && product.category !== activeCategory) {
         return false;
       }
@@ -85,12 +97,12 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) =>
       }
       return true;
     });
-  }, [allProducts, activeCategory, priceMax, activeColor, activeSize, searchQuery]);
+  }, [allProducts, activeCategory, priceMax, activeColor, activeSize, searchQuery, currentFilter]);
 
   // Reset pagination page to 1 when filters change
   useMemo(() => {
     setCurrentPage(1);
-  }, [activeCategory, priceMax, activeColor, activeSize, searchQuery]);
+  }, [activeCategory, priceMax, activeColor, activeSize, searchQuery, currentFilter]);
 
   const itemsPerPage = 9;
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
@@ -140,6 +152,8 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) =>
     setActiveSize(null);
     setPriceMax(200);
     setActiveDressStyle(null);
+    setCurrentFilter(null);
+    onClearInitialFilter && onClearInitialFilter();
   };
 
   const renderFilters = () => (
@@ -330,11 +344,25 @@ const Category = ({ onProductClick, onBackHome, searchQuery, onClearSearch }) =>
                 </div>
               )}
 
+              {/* Dynamic Initial Filter Chip Indicator */}
+              {currentFilter && (
+                <div className={styles.searchBanner}>
+                  <span>Showing results for <strong>{currentFilter === 'sale' ? 'On Sale Items' : 'New Arrivals'}</strong></span>
+                  <button 
+                    onClick={() => { setCurrentFilter(null); onClearInitialFilter && onClearInitialFilter(); }} 
+                    className={styles.clearSearchBtn} 
+                    aria-label="Clear filter"
+                  >
+                    <FiX size={14} /> Clear Filter
+                  </button>
+                </div>
+              )}
+
               {/* Products Area Header */}
               <div className={styles.areaHeader}>
                 <div className={styles.titleInfo}>
                   <h1 className={styles.title}>
-                    {searchQuery ? 'Search Results' : (activeCategory || 'Casual')}
+                    {searchQuery ? 'Search Results' : (currentFilter === 'sale' ? 'On Sale' : (currentFilter === 'new' ? 'New Arrivals' : (activeCategory || 'Casual')))}
                   </h1>
                   <span className={styles.productCount}>
                     Showing {displayedProducts.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0}-{Math.min(currentPage * itemsPerPage, filteredProducts.length)} of {filteredProducts.length} Products

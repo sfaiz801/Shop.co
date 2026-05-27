@@ -21,6 +21,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [shopFilter, setShopFilter] = useState(null);
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
@@ -69,14 +70,43 @@ function App() {
 
   const goHome = () => {
     setSearchQuery('');
+    setShopFilter(null);
     setPage('home');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goToCategory = () => {
     setSearchQuery('');
+    setShopFilter(null);
     setPage('category');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToSale = () => {
+    setSearchQuery('');
+    setShopFilter('sale');
+    setPage('category');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToNewArrivals = () => {
+    setSearchQuery('');
+    setShopFilter('new');
+    setPage('category');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToBrands = () => {
+    if (page !== 'home') {
+      setPage('home');
+      setTimeout(() => {
+        const el = document.getElementById('brands-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    } else {
+      const el = document.getElementById('brands-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   const goToLogin = () => {
@@ -175,13 +205,16 @@ function App() {
           searchQuery={searchQuery}
           onSuggestionClick={goToDetail}
           cartCount={cartCount}
+          onOnSaleClick={goToSale}
+          onNewArrivalsClick={goToNewArrivals}
+          onBrandsClick={goToBrands}
         />
       )}
 
       {page === 'home' && (
         <main>
           <Hero onShopNowClick={goToCategory} />
-          <Brands />
+          <div id="brands-section"><Brands /></div>
           <ProductSection title="New Arrivals" products={data.newArrivals} onCardClick={goToDetail} onViewAllClick={goToCategory} />
           <ProductSection title="Top Selling" products={data.topSelling} onCardClick={goToDetail} onViewAllClick={goToCategory} />
           <DressStyle onCategoryClick={goToCategory} />
@@ -197,6 +230,8 @@ function App() {
             onBackHome={goHome} 
             searchQuery={searchQuery}
             onClearSearch={() => setSearchQuery('')}
+            initialFilter={shopFilter}
+            onClearInitialFilter={() => setShopFilter(null)}
           />
           <Newsletter />
         </main>
