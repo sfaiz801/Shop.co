@@ -110,7 +110,7 @@
   display: flex;
   align-items: center;
   gap: $space-8;
-  flex: 1;
+  flex: 0 1 auto;
 
   .closeMenuBtn {
     display: none;
@@ -176,6 +176,8 @@
   align-items: center;
   gap: $space-4;
   margin-left: auto;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .searchBox {
@@ -186,6 +188,8 @@
   border-radius: $radius-full;
   padding: 10px 16px;
   min-width: 280px;
+  flex: 1;
+  max-width: 600px;
   position: relative;
 
   svg {
